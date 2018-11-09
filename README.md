@@ -1,8 +1,8 @@
-#Pap_OrderNote
+## Pap_OrderNote
 
 This extensions allows creation of order note, modification of defaults and storing notes against the customer.
 
-###Admin
+#### Admin
 
 Admin options for notes can be found under 
 
