@@ -2,7 +2,6 @@
   "name": "tpap/module-ordernote",
   "description": "N/A",
   "require": {
-    "php": ">=5.6.0"
   },
   "type": "magento2-module",
   "version": "1.0.0",
