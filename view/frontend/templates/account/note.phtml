@@ -1,0 +1,18 @@
+<?php /** @var $block Pap\OrderNote\Block\Account\Note */ ?>
+<div>
+    <form
+            class="form-address-edit"
+            action="<?= $block->escapeUrl($block->getSaveUrl()) ?>"
+            method="post"
+            id="form-validate"
+            enctype="multipart/form-data"
+            data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+        <label for="note">My Note</label>
+        <div class="control">
+            <input type="text" name="note" class="input-text required-entry" value="<?php echo $block->getCurrentNote(); ?>"/>
+        </div>
+        <button type="submit" class="action save primary" >
+            <span>Save Note</span>
+        </button>
+    </form>
+</div>

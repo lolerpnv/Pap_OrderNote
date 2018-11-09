@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="joins" xsi:type="array">
+                <item name="customer_note" xsi:type="array">
+                    <item name="table" xsi:type="string">pap_order_note</item>
+                    <item name="origin_column" xsi:type="string">entity_id</item>
+                    <item name="target_column" xsi:type="string">order_id</item>
+                </item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="customer_note" xsi:type="string">customer_note.note</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="order_note_shipment_create"
+                      xsi:type="object">Pap\OrderNote\Console\Command\ShipmentCommand</item>
+                <item name="order_note_shipment_export"
+                      xsi:type="object">Pap\OrderNote\Console\Command\ExportShipmentsCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Order Repo plugin , used to pass api data -->
+    <type name="Magento\Sales\Model\OrderRepository">
+        <plugin name="pap_order_note_order_repository_plugin" type="Pap\OrderNote\Model\Plugin\Order\OrderRepository"/>
+    </type>
+
+    <!-- Place order-->
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="save-order-note" type="Pap\OrderNote\Model\Checkout\PaymentInformationManagementPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="save-order-note" type="Pap\OrderNote\Model\Checkout\GuestPaymentInformationManagementPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- Used to pass ext att notes-->
+    <type name="Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <plugin name="pap_ordernote_checkout_rendering_data" type="Pap\OrderNote\Model\Plugin\Quote\Cart\ShippingMethodConverter"/>
+    </type>
+</config>

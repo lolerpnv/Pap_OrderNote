@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customer">
+            <tab>customer</tab>
+            <group id="customer_note" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Customer Note</label>
+                <hide_in_single_store_mode>1</hide_in_single_store_mode>
+                <field id="notes" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Customer Notes</label>
+                    <comment>Each new line represents additional entry</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
